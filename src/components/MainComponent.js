@@ -3,8 +3,9 @@ import { DISHES } from "../shared/dishes";
 import { COMMENTS } from "../shared/comments";
 import { PROMOTIONS } from "../shared/promotions";
 import { LEADERS } from "../shared/leaders";
-import Home from "./HomeComponent";
 import Header from "./HeaderComponent";
+import Home from "./HomeComponent";
+import About from "./AboutComponent";
 import Menu from "./MenuComponent";
 import Contact from "./ContactComponent";
 import DishDetail from "./DishdetailComponent";
@@ -34,6 +35,10 @@ class Main extends Component {
       );
     };
 
+    const AboutUs = () => {
+      return <About leaders={this.state.leaders} />;
+    };
+
     const DishWithId = ({ match }) => {
       return (
         <DishDetail
@@ -59,6 +64,7 @@ class Main extends Component {
             path="/menu"
             component={() => <Menu dishes={this.state.dishes} />}
           />
+          <Route path="/aboutus" component={AboutUs} />
           <Route path="/menu/:dishId" component={DishWithId} />
           <Route exact path="/contactus" component={Contact} />
           <Redirect to="/home" />
